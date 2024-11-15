@@ -1,0 +1,22 @@
+<%- include('layouts/header'); %>
+<main>
+    <form action method="get">
+        <select name="city">
+            <% data.forEach((item) => { %>
+            <option value="<%= item.city %>" <%= item.city === selectedCity?.city ? 'selected' : '' %>><%= item.city %></option>
+            <% }) %>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Hiển thị plate_no nếu có thành phố được chọn -->
+    <% if (plate_no) { %>
+        <h2>Plate Numbers for <%= selectedCity.city %>:</h2>
+        <p><%= plate_no %></p>
+    <% } else { %>
+        <p>Please select a city to see the plate numbers.</p>
+    <% } %>
+
+    <h1>Home Page</h1>
+</main>
+<%- include('layouts/footer'); %>
