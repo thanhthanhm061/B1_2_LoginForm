@@ -19,16 +19,15 @@ app.use(express.static(path.join(__dirname, 'public'))); // Cung cấp các tài
 // Kết nối MongoDB
 require('dotenv').config(); // Load các biến môi trường từ file .env
 
+// Sửa lại cách kết nối với MongoDB bằng mongoose.connect()
 mongoose
-  .connect(process.env.DB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.DB_URI)
   .then(() => console.log('Connected to MongoDB successfully!'))
   .catch((err) => {
     console.error('Failed to connect to MongoDB:', err);
     process.exit(1);
   });
+
 
 // Định tuyến
 app.use('/api/bookings', bookingRoutes); // Định tuyến cho booking

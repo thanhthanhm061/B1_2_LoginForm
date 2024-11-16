@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+var mongoose = require('mongoose');
 
 export const connectDB = async(uri) => {
     try {
